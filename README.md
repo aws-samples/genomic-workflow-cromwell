@@ -79,6 +79,3 @@ java -Dconfig.file=/home/ec2-user/aws.conf -jar /home/ec2-user/cromwell-86.jar r
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
-## License
-
-This library is licensed under the Apache 2.0 License.
