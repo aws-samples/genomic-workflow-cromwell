@@ -1,0 +1,2431 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "cb1721442713": {
+        "id": "cb1721442713",
+        "path": "cb1721442713",
+        "children": {
+          "CromwellResultBucket": {
+            "id": "CromwellResultBucket",
+            "path": "cb1721442713/CromwellResultBucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellResultBucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "cb1721442713-cromwell-result-",
+                          {
+                            "Ref": "AWS::Region"
+                          },
+                          "-1721442713"
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellScriptBucket": {
+            "id": "CromwellScriptBucket",
+            "path": "cb1721442713/CromwellScriptBucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellScriptBucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "cb1721442713-cromwell-script-",
+                          {
+                            "Ref": "AWS::Region"
+                          },
+                          "-1721442713"
+                        ]
+                      ]
+                    },
+                    "tags": [
+                      {
+                        "key": "aws-cdk:cr-owned:ae3185f8",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellRefBucket": {
+            "id": "CromwellRefBucket",
+            "path": "cb1721442713/CromwellRefBucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellRefBucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "cb1721442713-cromwell-ref-",
+                          {
+                            "Ref": "AWS::Region"
+                          },
+                          "-1721442713"
+                        ]
+                      ]
+                    },
+                    "tags": [
+                      {
+                        "key": "aws-cdk:cr-owned:13386fcd",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.103.1"
+            }
+          },
+          "fetchAndRun": {
+            "id": "fetchAndRun",
+            "path": "cb1721442713/fetchAndRun",
+            "children": {
+              "AwsCliLayer": {
+                "id": "AwsCliLayer",
+                "path": "cb1721442713/fetchAndRun/AwsCliLayer",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "cb1721442713/fetchAndRun/AwsCliLayer/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "cb1721442713/fetchAndRun/AwsCliLayer/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.103.1"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "cb1721442713/fetchAndRun/AwsCliLayer/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.103.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "cb1721442713/fetchAndRun/AwsCliLayer/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "content": {
+                          "s3Bucket": "cdk-hnb659fds-assets-763309664766-ap-east-1",
+                          "s3Key": "3322b7049fb0ed2b7cbb644a2ada8d1116ff80c32dca89e6ada846b5de26f961.zip"
+                        },
+                        "description": "/opt/awscli/aws"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.lambda_layer_awscli.AwsCliLayer",
+                  "version": "2.103.1"
+                }
+              },
+              "CustomResourceHandler": {
+                "id": "CustomResourceHandler",
+                "path": "cb1721442713/fetchAndRun/CustomResourceHandler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.SingletonFunction",
+                  "version": "2.103.1"
+                }
+              },
+              "Asset1": {
+                "id": "Asset1",
+                "path": "cb1721442713/fetchAndRun/Asset1",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "cb1721442713/fetchAndRun/Asset1/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "cb1721442713/fetchAndRun/Asset1/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.103.1"
+                }
+              },
+              "CustomResource": {
+                "id": "CustomResource",
+                "path": "cb1721442713/fetchAndRun/CustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "cb1721442713/fetchAndRun/CustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3_deployment.BucketDeployment",
+              "version": "2.103.1"
+            }
+          },
+          "Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": {
+            "id": "Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C",
+            "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:GetBucket*",
+                                    "s3:GetObject*",
+                                    "s3:List*"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    "arn:aws:s3:::cdk-hnb659fds-assets-763309664766-ap-east-1",
+                                    "arn:aws:s3:::cdk-hnb659fds-assets-763309664766-ap-east-1/*"
+                                  ]
+                                },
+                                {
+                                  "Action": [
+                                    "s3:Abort*",
+                                    "s3:DeleteObject*",
+                                    "s3:GetBucket*",
+                                    "s3:GetObject*",
+                                    "s3:List*",
+                                    "s3:PutObject",
+                                    "s3:PutObjectLegalHold",
+                                    "s3:PutObjectRetention",
+                                    "s3:PutObjectTagging",
+                                    "s3:PutObjectVersionTagging"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "CromwellRefBucketB33148E0",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::GetAtt": [
+                                        "CromwellScriptBucketA21D0385",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "CromwellRefBucketB33148E0",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "CromwellScriptBucketA21D0385",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+                            "roles": [
+                              {
+                                "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.103.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.103.1"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.103.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-763309664766-ap-east-1",
+                      "s3Key": "9eb41a5505d37607ac419321497a4f8c21cf0ee1f9b4a6b29aa04301aea5c7fd.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+                      }
+                    },
+                    "handler": "index.handler",
+                    "layers": [
+                      {
+                        "Ref": "fetchAndRunAwsCliLayerBAA21AC0"
+                      }
+                    ],
+                    "role": {
+                      "Fn::GetAtt": [
+                        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.9",
+                    "timeout": 900
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.103.1"
+            }
+          },
+          "testFastq": {
+            "id": "testFastq",
+            "path": "cb1721442713/testFastq",
+            "children": {
+              "AwsCliLayer": {
+                "id": "AwsCliLayer",
+                "path": "cb1721442713/testFastq/AwsCliLayer",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "cb1721442713/testFastq/AwsCliLayer/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "cb1721442713/testFastq/AwsCliLayer/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.103.1"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "cb1721442713/testFastq/AwsCliLayer/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.103.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "cb1721442713/testFastq/AwsCliLayer/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "content": {
+                          "s3Bucket": "cdk-hnb659fds-assets-763309664766-ap-east-1",
+                          "s3Key": "3322b7049fb0ed2b7cbb644a2ada8d1116ff80c32dca89e6ada846b5de26f961.zip"
+                        },
+                        "description": "/opt/awscli/aws"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.lambda_layer_awscli.AwsCliLayer",
+                  "version": "2.103.1"
+                }
+              },
+              "CustomResourceHandler": {
+                "id": "CustomResourceHandler",
+                "path": "cb1721442713/testFastq/CustomResourceHandler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.SingletonFunction",
+                  "version": "2.103.1"
+                }
+              },
+              "Asset1": {
+                "id": "Asset1",
+                "path": "cb1721442713/testFastq/Asset1",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "cb1721442713/testFastq/Asset1/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "cb1721442713/testFastq/Asset1/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.103.1"
+                }
+              },
+              "CustomResource": {
+                "id": "CustomResource",
+                "path": "cb1721442713/testFastq/CustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "cb1721442713/testFastq/CustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3_deployment.BucketDeployment",
+              "version": "2.103.1"
+            }
+          },
+          "cb1721442713-CromwellBatchVPC": {
+            "id": "cb1721442713-CromwellBatchVPC",
+            "path": "cb1721442713/cb1721442713-CromwellBatchVPC",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
+                  "aws:cdk:cloudformation:props": {
+                    "cidrBlock": "10.0.0.0/16",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "cb1721442713/cb1721442713-CromwellBatchVPC"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPC",
+                  "version": "2.103.1"
+                }
+              },
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "availabilityZone": "ap-east-1a",
+                        "cidrBlock": "10.0.0.0/20",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1RouteTable1B066C21"
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1SubnetFB4714DB"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "cb1721442713CromwellBatchVPCIGW7A4C9AD7"
+                        },
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1RouteTable1B066C21"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnEIP",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "cb1721442713CromwellBatchVPCPublicSubnet1EIP738FD1E9",
+                            "AllocationId"
+                          ]
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1SubnetFB4714DB"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnNatGateway",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.103.1"
+                }
+              },
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "availabilityZone": "ap-east-1b",
+                        "cidrBlock": "10.0.16.0/20",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet2RouteTable95EAD211"
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet2Subnet61ED2D35"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "cb1721442713CromwellBatchVPCIGW7A4C9AD7"
+                        },
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet2RouteTable95EAD211"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.103.1"
+                }
+              },
+              "PublicSubnet3": {
+                "id": "PublicSubnet3",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "availabilityZone": "ap-east-1c",
+                        "cidrBlock": "10.0.32.0/20",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet3RouteTableBA5D9468"
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet3SubnetE9288581"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PublicSubnet3/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "cb1721442713CromwellBatchVPCIGW7A4C9AD7"
+                        },
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet3RouteTableBA5D9468"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.103.1"
+                }
+              },
+              "PrivateSubnet1": {
+                "id": "PrivateSubnet1",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "availabilityZone": "ap-east-1a",
+                        "cidrBlock": "10.0.48.0/20",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet1RouteTable005D0741"
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet1Subnet6BCDD3A5"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1NATGateway4D14489C"
+                        },
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet1RouteTable005D0741"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.103.1"
+                }
+              },
+              "PrivateSubnet2": {
+                "id": "PrivateSubnet2",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "availabilityZone": "ap-east-1b",
+                        "cidrBlock": "10.0.64.0/20",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet2RouteTableD8DF1182"
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet2Subnet0ECE76AD"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1NATGateway4D14489C"
+                        },
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet2RouteTableD8DF1182"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.103.1"
+                }
+              },
+              "PrivateSubnet3": {
+                "id": "PrivateSubnet3",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "availabilityZone": "ap-east-1c",
+                        "cidrBlock": "10.0.80.0/20",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet3RouteTableC0DEDE47"
+                        },
+                        "subnetId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet3Subnet72692E88"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.103.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/PrivateSubnet3/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1NATGateway4D14489C"
+                        },
+                        "routeTableId": {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet3RouteTableC0DEDE47"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.103.1"
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "cb1721442713/cb1721442713-CromwellBatchVPC"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnInternetGateway",
+                  "version": "2.103.1"
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "internetGatewayId": {
+                      "Ref": "cb1721442713CromwellBatchVPCIGW7A4C9AD7"
+                    },
+                    "vpcId": {
+                      "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPCGatewayAttachment",
+                  "version": "2.103.1"
+                }
+              },
+              "RestrictDefaultSecurityGroupCustomResource": {
+                "id": "RestrictDefaultSecurityGroupCustomResource",
+                "path": "cb1721442713/cb1721442713-CromwellBatchVPC/RestrictDefaultSecurityGroupCustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "cb1721442713/cb1721442713-CromwellBatchVPC/RestrictDefaultSecurityGroupCustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.Vpc",
+              "version": "2.103.1"
+            }
+          },
+          "Custom::VpcRestrictDefaultSGCustomResourceProvider": {
+            "id": "Custom::VpcRestrictDefaultSGCustomResourceProvider",
+            "path": "cb1721442713/Custom::VpcRestrictDefaultSGCustomResourceProvider",
+            "children": {
+              "Staging": {
+                "id": "Staging",
+                "path": "cb1721442713/Custom::VpcRestrictDefaultSGCustomResourceProvider/Staging",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.AssetStaging",
+                  "version": "2.103.1"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "cb1721442713/Custom::VpcRestrictDefaultSGCustomResourceProvider/Role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.103.1"
+                }
+              },
+              "Handler": {
+                "id": "Handler",
+                "path": "cb1721442713/Custom::VpcRestrictDefaultSGCustomResourceProvider/Handler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CustomResourceProvider",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellEFS": {
+            "id": "CromwellEFS",
+            "path": "cb1721442713/CromwellEFS",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellEFS/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::FileSystem",
+                  "aws:cdk:cloudformation:props": {
+                    "encrypted": true,
+                    "fileSystemTags": [
+                      {
+                        "key": "Name",
+                        "value": "cb1721442713-CromwellEFS"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnFileSystem",
+                  "version": "2.103.1"
+                }
+              },
+              "EfsSecurityGroup": {
+                "id": "EfsSecurityGroup",
+                "path": "cb1721442713/CromwellEFS/EfsSecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "cb1721442713/CromwellEFS/EfsSecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "cb1721442713/CromwellEFS/EfsSecurityGroup",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "securityGroupIngress": [
+                          {
+                            "cidrIp": {
+                              "Fn::GetAtt": [
+                                "cb1721442713CromwellBatchVPC2ADC45D0",
+                                "CidrBlock"
+                              ]
+                            },
+                            "ipProtocol": "tcp",
+                            "fromPort": 2049,
+                            "toPort": 2049,
+                            "description": "Allow NFS traffic from VPC"
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713-CromwellEFS"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.103.1"
+                }
+              },
+              "EfsMountTarget-PrivateSubnet1": {
+                "id": "EfsMountTarget-PrivateSubnet1",
+                "path": "cb1721442713/CromwellEFS/EfsMountTarget-PrivateSubnet1",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::MountTarget",
+                  "aws:cdk:cloudformation:props": {
+                    "fileSystemId": {
+                      "Ref": "CromwellEFSAEAADC6E"
+                    },
+                    "securityGroups": [
+                      {
+                        "Fn::GetAtt": [
+                          "CromwellEFSEfsSecurityGroup715F735C",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetId": {
+                      "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet1Subnet6BCDD3A5"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnMountTarget",
+                  "version": "2.103.1"
+                }
+              },
+              "EfsMountTarget-PrivateSubnet2": {
+                "id": "EfsMountTarget-PrivateSubnet2",
+                "path": "cb1721442713/CromwellEFS/EfsMountTarget-PrivateSubnet2",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::MountTarget",
+                  "aws:cdk:cloudformation:props": {
+                    "fileSystemId": {
+                      "Ref": "CromwellEFSAEAADC6E"
+                    },
+                    "securityGroups": [
+                      {
+                        "Fn::GetAtt": [
+                          "CromwellEFSEfsSecurityGroup715F735C",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetId": {
+                      "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet2Subnet0ECE76AD"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnMountTarget",
+                  "version": "2.103.1"
+                }
+              },
+              "EfsMountTarget-PrivateSubnet3": {
+                "id": "EfsMountTarget-PrivateSubnet3",
+                "path": "cb1721442713/CromwellEFS/EfsMountTarget-PrivateSubnet3",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::MountTarget",
+                  "aws:cdk:cloudformation:props": {
+                    "fileSystemId": {
+                      "Ref": "CromwellEFSAEAADC6E"
+                    },
+                    "securityGroups": [
+                      {
+                        "Fn::GetAtt": [
+                          "CromwellEFSEfsSecurityGroup715F735C",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetId": {
+                      "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet3Subnet72692E88"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnMountTarget",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_efs.FileSystem",
+              "version": "2.103.1"
+            }
+          },
+          "BatchServiceRole": {
+            "id": "BatchServiceRole",
+            "path": "cb1721442713/BatchServiceRole",
+            "children": {
+              "ImportBatchServiceRole": {
+                "id": "ImportBatchServiceRole",
+                "path": "cb1721442713/BatchServiceRole/ImportBatchServiceRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.103.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/BatchServiceRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "batch.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/service-role/AWSBatchServiceRole"
+                          ]
+                        ]
+                      }
+                    ],
+                    "roleName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "cb1721442713-CromwellBatchServiceRole-",
+                          {
+                            "Ref": "AWS::Region"
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.103.1"
+            }
+          },
+          "BatchInstanceRole": {
+            "id": "BatchInstanceRole",
+            "path": "cb1721442713/BatchInstanceRole",
+            "children": {
+              "ImportBatchInstanceRole": {
+                "id": "ImportBatchInstanceRole",
+                "path": "cb1721442713/BatchInstanceRole/ImportBatchInstanceRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.103.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/BatchInstanceRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "ec2.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonElasticFileSystemClientReadWriteAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonECS_FullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonS3FullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/CloudWatchLogsFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+                          ]
+                        ]
+                      }
+                    ],
+                    "roleName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "cb1721442713-CromwellBatchInstanceRole-",
+                          {
+                            "Ref": "AWS::Region"
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.103.1"
+            }
+          },
+          "cb1721442713-CromwellLaunchTemplate": {
+            "id": "cb1721442713-CromwellLaunchTemplate",
+            "path": "cb1721442713/cb1721442713-CromwellLaunchTemplate",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/cb1721442713-CromwellLaunchTemplate/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::LaunchTemplate",
+                  "aws:cdk:cloudformation:props": {
+                    "launchTemplateData": {
+                      "blockDeviceMappings": [
+                        {
+                          "deviceName": "/dev/xvda",
+                          "ebs": {
+                            "volumeSize": 500
+                          }
+                        }
+                      ],
+                      "tagSpecifications": [
+                        {
+                          "resourceType": "instance",
+                          "tags": [
+                            {
+                              "key": "Name",
+                              "value": "cb1721442713/cb1721442713-CromwellLaunchTemplate"
+                            }
+                          ]
+                        },
+                        {
+                          "resourceType": "volume",
+                          "tags": [
+                            {
+                              "key": "Name",
+                              "value": "cb1721442713/cb1721442713-CromwellLaunchTemplate"
+                            }
+                          ]
+                        }
+                      ],
+                      "userData": {
+                        "Fn::Base64": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "#!/bin/bash\nMIME-Version: 1.0\nContent-Type: multipart/mixed; boundary=\"==MYBOUNDARY==\"\n\n--==MYBOUNDARY==\nContent-Type: text/x-shellscript; charset=\"us-ascii\"\n\n#!/bin/bash\nyum update -y\nyum install jq btrfs-progs sed git unzip lustre-client amazon-efs-utils wget -y\npip3 install botocore\ncurl -s \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"/tmp/awscliv2.zip\"\nunzip -q /tmp/awscliv2.zip -d /tmp\n/tmp/aws/install -b /usr/bin\nmkdir -p /opt/aws-cli/bin\ncp -a $(dirname $(find /usr/local/aws-cli -name 'aws' -type f))/. /opt/aws-cli/bin/mkdir -p /opt/ecs-additions/\naws configure set default.region ",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\naws s3 cp s3://",
+                              {
+                                "Ref": "CromwellScriptBucketA21D0385"
+                              },
+                              "/fetch_and_run.sh /opt/ecs-additions/fetch_and_run.sh\nchmod a+x /opt/ecs-additions/fetch_and_run.sh\ncp /opt/ecs-additions/fetch_and_run.sh /usr/local/bin\naws s3 cp s3://",
+                              {
+                                "Ref": "CromwellScriptBucketA21D0385"
+                              },
+                              "/awscli-shim.sh /opt/ecs-additions/awscli-shim.sh\nmv /opt/aws-cli/bin /opt/aws-cli/dist\nchmod a+x /opt/ecs-additions/awscli-shim.sh\ncp /opt/ecs-additions/awscli-shim.sh /opt/aws-cli/bin/aws\nrm -f /usr/local/aws-cli/v2/current/bin/aws\ncp /opt/ecs-additions/awscli-shim.sh /usr/local/aws-cli/v2/current/bin/aws\nln -sf /usr/local/aws-cli/v2/current/dist/aws /usr/bin/aws\nwget https://s3.amazonaws.com/mountpoint-s3-release/latest/x86_64/mount-s3.rpm -O /tmp/mount-s3.rpm\nyum install -y /tmp/mount-s3.rpm\nmkdir -p /data/ref\nmount-s3 --dir-mode 0555 --file-mode 0444 --allow-other ",
+                              {
+                                "Ref": "CromwellRefBucketB33148E0"
+                              },
+                              " /data/ref\nmkdir /efs\nmount -t efs -o tls ",
+                              {
+                                "Ref": "CromwellEFSAEAADC6E"
+                              },
+                              ":/ /efs\nchmod 777 /efs\n\n--==MYBOUNDARY==--"
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "tagSpecifications": [
+                      {
+                        "resourceType": "launch-template",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "cb1721442713/cb1721442713-CromwellLaunchTemplate"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnLaunchTemplate",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.LaunchTemplate",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellBatchComputeEnv": {
+            "id": "CromwellBatchComputeEnv",
+            "path": "cb1721442713/CromwellBatchComputeEnv",
+            "children": {
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "cb1721442713/CromwellBatchComputeEnv/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "cb1721442713/CromwellBatchComputeEnv/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "cb1721442713/CromwellBatchComputeEnv/SecurityGroup",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                      "version": "2.103.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                  "version": "2.103.1"
+                }
+              },
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "cb1721442713/CromwellBatchComputeEnv/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "BatchInstanceRole8DB66C4C"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnInstanceProfile",
+                  "version": "2.103.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellBatchComputeEnv/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Batch::ComputeEnvironment",
+                  "aws:cdk:cloudformation:props": {
+                    "computeEnvironmentName": "cb1721442713-CromwellBatchComputeEnv",
+                    "computeResources": {
+                      "maxvCpus": 1024,
+                      "type": "EC2",
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "CromwellBatchComputeEnvSecurityGroup4C9573F3",
+                            "GroupId"
+                          ]
+                        }
+                      ],
+                      "subnets": [
+                        {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet1Subnet6BCDD3A5"
+                        },
+                        {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet2Subnet0ECE76AD"
+                        },
+                        {
+                          "Ref": "cb1721442713CromwellBatchVPCPrivateSubnet3Subnet72692E88"
+                        }
+                      ],
+                      "minvCpus": 0,
+                      "instanceRole": {
+                        "Fn::GetAtt": [
+                          "CromwellBatchComputeEnvInstanceProfile5123074E",
+                          "Arn"
+                        ]
+                      },
+                      "instanceTypes": [
+                        "m6i",
+                        "r6i",
+                        "c6i"
+                      ],
+                      "allocationStrategy": "BEST_FIT_PROGRESSIVE",
+                      "launchTemplate": {
+                        "launchTemplateId": {
+                          "Ref": "cb1721442713CromwellLaunchTemplateE4D3904B"
+                        }
+                      }
+                    },
+                    "replaceComputeEnvironment": false,
+                    "serviceRole": {
+                      "Fn::GetAtt": [
+                        "BatchServiceRole57930367",
+                        "Arn"
+                      ]
+                    },
+                    "state": "ENABLED",
+                    "type": "managed",
+                    "updatePolicy": {}
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_batch.CfnComputeEnvironment",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_batch.ManagedEc2EcsComputeEnvironment",
+              "version": "2.103.1"
+            }
+          },
+          "JobQueue": {
+            "id": "JobQueue",
+            "path": "cb1721442713/JobQueue",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/JobQueue/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Batch::JobQueue",
+                  "aws:cdk:cloudformation:props": {
+                    "computeEnvironmentOrder": [
+                      {
+                        "computeEnvironment": {
+                          "Fn::GetAtt": [
+                            "CromwellBatchComputeEnv437312BF",
+                            "ComputeEnvironmentArn"
+                          ]
+                        },
+                        "order": 1
+                      }
+                    ],
+                    "jobQueueName": "cb1721442713-CromwellBatchQueue",
+                    "priority": 1,
+                    "state": "ENABLED"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_batch.CfnJobQueue",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_batch.JobQueue",
+              "version": "2.103.1"
+            }
+          },
+          "cb1721442713-EcrRepositoryUri": {
+            "id": "cb1721442713-EcrRepositoryUri",
+            "path": "cb1721442713/cb1721442713-EcrRepositoryUri",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/cb1721442713-EcrRepositoryUri/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ECR::Repository",
+                  "aws:cdk:cloudformation:props": {
+                    "repositoryName": "cb1721442713-cromwell-repo"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ecr.CfnRepository",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ecr.Repository",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellSecurityGroup": {
+            "id": "CromwellSecurityGroup",
+            "path": "cb1721442713/CromwellSecurityGroup",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellSecurityGroup/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Allow SSH access",
+                    "groupName": "cb1721442713-CromwellSecurityGroup",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "Allow all outbound traffic by default",
+                        "ipProtocol": "-1"
+                      }
+                    ],
+                    "securityGroupIngress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 22,
+                        "toPort": 22,
+                        "description": "Allow SSH access from anywhere"
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "cb1721442713CromwellBatchVPC2ADC45D0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellServerRole": {
+            "id": "CromwellServerRole",
+            "path": "cb1721442713/CromwellServerRole",
+            "children": {
+              "ImportCromwellServerRole": {
+                "id": "ImportCromwellServerRole",
+                "path": "cb1721442713/CromwellServerRole/ImportCromwellServerRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.103.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellServerRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "ec2.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AWSBatchFullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonS3FullAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+                          ]
+                        ]
+                      }
+                    ],
+                    "roleName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "cb1721442713-CromwellServerRole-",
+                          {
+                            "Ref": "AWS::Region"
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellInstance": {
+            "id": "CromwellInstance",
+            "path": "cb1721442713/CromwellInstance",
+            "children": {
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "cb1721442713/CromwellInstance/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "CromwellServerRole348D995A"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnInstanceProfile",
+                  "version": "2.103.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cb1721442713/CromwellInstance/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
+                  "aws:cdk:cloudformation:props": {
+                    "availabilityZone": "ap-east-1a",
+                    "blockDeviceMappings": [
+                      {
+                        "deviceName": "/dev/xvda",
+                        "ebs": {
+                          "volumeSize": 100
+                        }
+                      }
+                    ],
+                    "iamInstanceProfile": {
+                      "Ref": "CromwellInstanceInstanceProfileBA02B3A9"
+                    },
+                    "imageId": {
+                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amikernel510hvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                    },
+                    "instanceType": "c6i.xlarge",
+                    "securityGroupIds": [
+                      {
+                        "Fn::GetAtt": [
+                          "CromwellSecurityGroup143A6A87",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetId": {
+                      "Ref": "cb1721442713CromwellBatchVPCPublicSubnet1SubnetFB4714DB"
+                    },
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "cb1721442713-CromwellServer"
+                      }
+                    ],
+                    "userData": {
+                      "Fn::Base64": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "#!/bin/bash\nyum update -y\nyum install java-11-amazon-corretto amazon-efs-utils -y\nwget https://github.com/broadinstitute/cromwell/releases/download/86/cromwell-86.jar -O /home/ec2-user/cromwell-86.jar\nchown ec2-user:ec2-user /home/ec2-user/cromwell-86.jar\nchmod a+x /home/ec2-user/cromwell-86.jar\naws configure set default.region ",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "\naws s3 sync s3://",
+                            {
+                              "Ref": "CromwellScriptBucketA21D0385"
+                            },
+                            "/genomicsdemo /home/ec2-user/genomicsdemo\nchown -R ec2-user:ec2-user /home/ec2-user/genomicsdemo\nmkdir /efs\nmount -t efs -o tls ",
+                            {
+                              "Ref": "CromwellEFSAEAADC6E"
+                            },
+                            ":/ /efs\nchmod 777 /efs\ncat > /home/ec2-user/aws.conf << EOF\n\ninclude required(classpath(\"application\"))\n\nwebservice {\n  interface = localhost\n  port = 8000\n}\n\naws {\n  application-name = \"cromwell\"\n  auths = [{\n      name = \"default\"\n      scheme = \"default\"\n  }]\n  region = \"",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "\"\n}\n\ncall-caching {\n  enabled = true\n  invalidate-bad-cache-results = true\n}\n\nengine { filesystems { s3 { auth = \"default\" } } }\n\nbackend {\n  default = \"AWSBATCH\"\n  providers {\n    AWSBATCH {\n      actor-factory = \"cromwell.backend.impl.aws.AwsBatchBackendLifecycleActorFactory\"\n      config {\n        numSubmitAttempts = 2\n        numCreateDefinitionAttempts = 2\n        root = \"s3://cb1721442713-cromwell-result-",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "-1721442713\"\n        auth = \"default\"\n        default-runtime-attributes { queueArn = \"",
+                            {
+                              "Fn::GetAtt": [
+                                "JobQueueEE3AD499",
+                                "JobQueueArn"
+                              ]
+                            },
+                            "\" , scriptBucketName = \"cb1721442713-cromwell-script-",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "-1721442713\" , disks = [\"/data/ref\", \"/efs\"] }\n        filesystems {\n          s3 {\n            auth = \"default\"\n            duplication-strategy: [\n              \"hard-link\", \"soft-link\", \"copy\"\n            ]\n          }\n        }\n      }\n    }\n  }\n}\n        \nEOF\ncat > /home/ec2-user/genomicsdemo/demo.fastqtobam.inputs.json << EOF\n\n{\n \"fastqtobam.fastq1\" : \"s3://cb1721442713-cromwell-script-",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "-1721442713/genomicsdemo/demo-dataset/demo-reads/H06JUADXX130110.1.ATCACGAT.20k_reads_1.fastq\",\n \"fastqtobam.fastq2\" : \"s3://cb1721442713-cromwell-script-",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "-1721442713/genomicsdemo/demo-dataset/demo-reads/H06JUADXX130110.1.ATCACGAT.20k_reads_2.fastq\",\n \"fastqtobam.Ref\" : \"Homo_sapiens_assembly19_part.fasta\"\n}\n\nEOF"
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnInstance",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.Instance",
+              "version": "2.103.1"
+            }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-kernel-5.10-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-kernel-5.10-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "cb1721442713/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-kernel-5.10-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.103.1"
+            }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-kernel-5.10-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-kernel-5.10-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "cb1721442713/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-kernel-5.10-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.103.1"
+            }
+          },
+          "CromwellInstancePublicIP": {
+            "id": "CromwellInstancePublicIP",
+            "path": "cb1721442713/CromwellInstancePublicIP",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.103.1"
+            }
+          },
+          "RefBucketName": {
+            "id": "RefBucketName",
+            "path": "cb1721442713/RefBucketName",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.103.1"
+            }
+          },
+          "EcrRepositoryUri": {
+            "id": "EcrRepositoryUri",
+            "path": "cb1721442713/EcrRepositoryUri",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.103.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "cb1721442713/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "cb1721442713/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.103.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "cb1721442713/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.103.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "cb1721442713/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.103.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.103.1"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.103.1"
+    }
+  }
+}
