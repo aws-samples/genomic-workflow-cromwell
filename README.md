@@ -7,6 +7,7 @@ This project implements a bioinformatics analysis solution based on Cromwell and
 - Utilizes Cromwell as the workflow manager, orchestrating bioinformatics analysis pipelines
 - Leverages AWS Batch for scalable compute resources to run analysis tasks
 - Stores reference databases on Amazon S3, mounted as Docker volumes on compute nodes, the path is /data/ref/
+- Share file storage on Amazon EFS, mounted as Docker volumes on compute nodes, the path is /efs/
 - Initialize the Cromwell backend configuration file to work with AWS Batch, and initialize the test scripts
 - Builds cloud resources using AWS CDK, enabling Infrastructure as Code (IaC)
 

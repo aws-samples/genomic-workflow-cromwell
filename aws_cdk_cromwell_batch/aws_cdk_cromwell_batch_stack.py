@@ -4,6 +4,7 @@ import aws_cdk as cdk
 from aws_cdk import (
     Stack,
     aws_ec2 as ec2,
+    aws_efs as efs,
     aws_batch as batch,
     aws_s3 as s3,
     aws_iam as iam,
@@ -79,6 +80,21 @@ class AwsCdkCromwellBatchStack(Stack):
             ]
         )
 
+        # Create Amazon EFS file system.
+        efs_file_system = efs.FileSystem(
+            self, "CromwellEFS",
+            vpc=vpc,
+            removal_policy=cdk.RemovalPolicy.RETAIN,
+            file_system_name=f"{construct_id}-CromwellEFS",
+            allow_anonymous_access=True
+        )
+
+        efs_file_system.connections.allow_from(
+            ec2.Peer.ipv4(vpc.vpc_cidr_block), 
+            ec2.Port.tcp(2049), 
+            "Allow NFS traffic from VPC"
+        )
+
         # 3. Create a Batch Service Role
         batch_service_role_name = f"{construct_id}-CromwellBatchServiceRole-{cdk.Aws.REGION}"
         batch_service_role = iam.Role(
@@ -137,8 +153,11 @@ wget https://s3.amazonaws.com/mountpoint-s3-release/latest/x86_64/mount-s3.rpm -
 yum install -y /tmp/mount-s3.rpm
 mkdir -p /data/ref
 mount-s3 --dir-mode 0555 --file-mode 0444 --allow-other %s /data/ref
+mkdir /efs
+mount -t efs -o tls %s:/ /efs
+chmod 777 /efs
 
---==MYBOUNDARY==--""" % (cdk.Aws.REGION, script_bucket.bucket_name, script_bucket.bucket_name, ref_bucket.bucket_name)
+--==MYBOUNDARY==--""" % (cdk.Aws.REGION, script_bucket.bucket_name, script_bucket.bucket_name, ref_bucket.bucket_name, efs_file_system.file_system_id)
 
         user_data = ec2.UserData.for_linux()
         user_data.add_commands(user_data_script)
@@ -241,7 +260,7 @@ backend {
         numCreateDefinitionAttempts = 2
         root = "s3://%s"
         auth = "default"
-        default-runtime-attributes { queueArn = "%s" , scriptBucketName = "%s" , disks = ["/data/ref"] }
+        default-runtime-attributes { queueArn = "%s" , scriptBucketName = "%s" , disks = ["/data/ref", "/efs"] }
         filesystems {
           s3 {
             auth = "default"
@@ -285,13 +304,16 @@ backend {
         )
         
         instance.user_data.add_commands("yum update -y")
-        instance.user_data.add_commands("yum install java-11-amazon-corretto -y")
+        instance.user_data.add_commands("yum install java-11-amazon-corretto amazon-efs-utils -y")
         instance.user_data.add_commands("wget https://github.com/broadinstitute/cromwell/releases/download/86/cromwell-86.jar -O /home/ec2-user/cromwell-86.jar")
         instance.user_data.add_commands("chown ec2-user:ec2-user /home/ec2-user/cromwell-86.jar")
         instance.user_data.add_commands("chmod a+x /home/ec2-user/cromwell-86.jar")
         instance.user_data.add_commands("aws configure set default.region %s" % cdk.Aws.REGION)
         instance.user_data.add_commands("aws s3 sync s3://%s/genomicsdemo /home/ec2-user/genomicsdemo" % script_bucket.bucket_name)
         instance.user_data.add_commands("chown -R ec2-user:ec2-user /home/ec2-user/genomicsdemo")
+        instance.user_data.add_commands("mkdir /efs")
+        instance.user_data.add_commands("mount -t efs -o tls %s:/ /efs" % efs_file_system.file_system_id)
+        instance.user_data.add_commands("chmod 777 /efs")
         instance.user_data.add_commands("cat > /home/ec2-user/aws.conf << EOF")
         instance.user_data.add_commands(aws_conf)
         instance.user_data.add_commands("EOF")
