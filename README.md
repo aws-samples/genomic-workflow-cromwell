@@ -28,8 +28,8 @@ This project implements a bioinformatics analysis solution based on Cromwell and
 1. Clone the project repository:
 
 ```
-git clone https://github.com/zane529/aws-cdk-cromwell-batch
-cd aws-cdk-cromwell-batch
+git clone https://github.com/aws-samples/genomic-workflow-cromwell.git
+cd genomic-workflow-cromwell
 ```
 
 2. Create and activate a Python virtual environment:
